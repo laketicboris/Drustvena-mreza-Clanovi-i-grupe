@@ -4,8 +4,8 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Repositories
 {
     public class KorisnikRepository
     {
-        private const string filePath = "../data/korisnici.csv";
-        public static Dictionary<int, Korisnik> Data = new Dictionary<int, Korisnik>();
+        private const string filePath = "data/korisnici.csv";
+        public static Dictionary<int, Korisnik> Data;
 
         public KorisnikRepository()
         {
@@ -17,6 +17,7 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Repositories
 
         public void Load()
         {
+            Data = new Dictionary<int, Korisnik>();
             string[] lines = File.ReadAllLines(filePath);
             foreach (string line in lines)
             {
