@@ -79,5 +79,14 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
             grupaRepo.Save();
             return Ok("Korisnik je uspešno uklonjen iz grupe.");
         }
+        //dobavljanje korisnika jedne grupe
+        [HttpGet("{id}/korisnik")]
+        public IActionResult GetClanoviGrupe(int id)
+        {
+            if (!grupaRepo.Data.ContainsKey(id))
+                return NotFound("Grupa nije pronađena.");
+
+            return Ok(grupaRepo.Data[id].Korisnici);
+        }
     }
 }
