@@ -6,32 +6,34 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Repositories
     {
         private const string filePath = "data/grupe.csv";
         private const string clanstvaPath = "data/clanstva.csv";
-        public static Dictionary<int, Grupa> Data;
+
+        public Dictionary<int, Grupa> Data { get; set; }
 
         public GrupaRepository()
         {
-            if (Data == null)
-            {
-                Load();
-                UcitajClanstva(clanstvaPath, KorisnikRepository.Data);
-            }
+            Data = new Dictionary<int, Grupa>();
+            Load();
 
+            //Kreiramo korisnik repozitorijum da bismo učitali članstva
+            KorisnikRepository korisnikRepo = new KorisnikRepository();
+            UcitajClanstva(clanstvaPath, korisnikRepo.Data);
         }
 
         private void UcitajClanstva(string clanstvaPath, Dictionary<int, Korisnik> korisnici)
         {
-            if(!File.Exists(clanstvaPath))
+            if (!File.Exists(clanstvaPath))
             {
                 return;
             }
+
             string[] lines = File.ReadAllLines(clanstvaPath);
-            foreach(string line in lines)
+            foreach (string line in lines)
             {
                 string[] parts = line.Split(',');
                 int korisnikId = int.Parse(parts[0]);
                 int grupaId = int.Parse(parts[1]);
 
-                if(Data.ContainsKey(grupaId) && korisnici.ContainsKey(korisnikId))
+                if (Data.ContainsKey(grupaId) && korisnici.ContainsKey(korisnikId))
                 {
                     Data[grupaId].Korisnici.Add(korisnici[korisnikId]);
                 }
@@ -40,9 +42,13 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Repositories
 
         private void Load()
         {
-            Data = new Dictionary<int, Grupa>();
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
+
             string[] lines = File.ReadAllLines(filePath);
-            foreach(string line in lines)
+            foreach (string line in lines)
             {
                 string[] parts = line.Split(',');
                 int id = int.Parse(parts[0]);
@@ -54,5 +60,26 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Repositories
             }
         }
 
+        public void Save()
+        {
+            // Čuvanje informacija o grupama u grupe.csv
+            List<string> grupeLines = new List<string>();
+            foreach (var grupa in Data.Values)
+            {
+                grupeLines.Add($"{grupa.Id},{grupa.Ime},{grupa.DatumOsnivanja:yyyy-MM-dd}");
+            }
+            File.WriteAllLines(filePath, grupeLines);
+
+            //Čuvanje članstva korisnika u clanstva.csv
+            List<string> clanstvaLines = new List<string>();
+            foreach (var grupa in Data.Values)
+            {
+                foreach (var korisnik in grupa.Korisnici)
+                {
+                    clanstvaLines.Add($"{korisnik.Id},{grupa.Id}");
+                }
+            }
+            File.WriteAllLines(clanstvaPath, clanstvaLines);
+        }
     }
 }

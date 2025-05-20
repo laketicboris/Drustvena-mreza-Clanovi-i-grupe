@@ -14,18 +14,18 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
         [HttpGet]
         public ActionResult<List<Korisnik>> GetAll()
         {
-            List<Korisnik> korisnik = KorisnikRepository.Data.Values.ToList();
+            List<Korisnik> korisnik = korisnikRepo.Data.Values.ToList();
             return Ok(korisnik);
         }
 
         [HttpGet("{id}")]
         public ActionResult<Korisnik> GetById(int id)
         {
-            if (!KorisnikRepository.Data.ContainsKey(id))
+            if (!korisnikRepo.Data.ContainsKey(id))
             {
                 return NotFound($"Korisnik sa datim IDem {id} ne postoji");
             }
-            return Ok(KorisnikRepository.Data[id]);
+            return Ok(korisnikRepo.Data[id]);
         }
 
         [HttpPost]
@@ -35,8 +35,8 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
             {
                 return BadRequest("Nedostaju obavezna polja.");
             }
-            noviKorisnik.Id = SracunajNoviId(KorisnikRepository.Data.Keys.ToList());
-            KorisnikRepository.Data[noviKorisnik.Id] = noviKorisnik;
+            noviKorisnik.Id = SracunajNoviId(korisnikRepo.Data.Keys.ToList());
+            korisnikRepo.Data[noviKorisnik.Id] = noviKorisnik;
             korisnikRepo.Save();
 
             return Ok(noviKorisnik);
@@ -50,11 +50,11 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
             {
                 return BadRequest("Ime i korisnicko ime su obavezna polja.");
             }
-            if (!KorisnikRepository.Data.ContainsKey(id))
+            if (!korisnikRepo.Data.ContainsKey(id))
             {
                 return NotFound();
             }
-            Korisnik korisnik = KorisnikRepository.Data[id];
+            Korisnik korisnik = korisnikRepo.Data[id];
             korisnik.KorisnickoIme = uKorisnik.KorisnickoIme;
             korisnik.Ime = uKorisnik.Ime;
             korisnik.Prezime = uKorisnik.Prezime;
@@ -67,11 +67,11 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete (int id)
         {
-            if (!KorisnikRepository.Data.ContainsKey(id))
+            if (!korisnikRepo.Data.ContainsKey(id))
             {
                 return NotFound();
             }
-            KorisnikRepository.Data.Remove(id);
+            korisnikRepo.Data.Remove(id);
             korisnikRepo.Save();
 
             return NoContent();

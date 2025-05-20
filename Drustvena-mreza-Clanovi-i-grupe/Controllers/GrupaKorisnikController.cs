@@ -15,11 +15,11 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
         [HttpGet]
         public ActionResult<List<Korisnik>> GetClanovi (int grupaId)
         {
-            if (!GrupaRepository.Data.ContainsKey(grupaId))
+            if (!grupaRepo.Data.ContainsKey(grupaId))
             {
                 return NotFound("Grupa ne postoji.");
             }
-            return Ok(GrupaRepository.Data[grupaId].Korisnici);
+            return Ok(grupaRepo.Data[grupaId].Korisnici);
         }
     }
 }
