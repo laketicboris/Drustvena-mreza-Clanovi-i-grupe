@@ -1,0 +1,83 @@
+'use strict'
+
+// Model klase
+class Grupa {
+    constructor(id, naziv) {
+        this.id = id
+        this.naziv = naziv
+    }
+}
+
+// Inicijalizacija kada se stranica ucita
+function initializeGrupe() {
+    loadGrupe()
+}
+
+// Ucitavanje svih grupa sa servera
+function loadGrupe() {
+    fetch('http://localhost:5006/api/Grupa') 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Greška prilikom zahteva: " + response.status)
+            }
+            return response.json()
+        })
+        .then(grupe => {
+            createGroupTable(grupe)
+        })
+        .catch(error => {
+            console.error("Greška:", error.message)
+            alert("Došlo je do greške prilikom učitavanja grupa.")
+        })
+}
+
+// Kreiranje HTML tabele sa ucitanim grupama
+function createGroupTable(grupe) {
+    const container = document.querySelector("#grupaLista")
+    container.innerHTML = `
+        <table class="user-data">
+            <thead class="user-data-head">
+                <tr>
+                    <th>ID</th>
+                    <th>Naziv</th>
+                    <th>Opcije</th>
+                </tr>
+            </thead>
+            <tbody id="group-data-body"></tbody>
+        </table>
+    `
+    const tbody = container.querySelector("#group-data-body")
+
+    for (let grupa of grupe) {
+        const row = document.createElement("tr")
+        row.innerHTML = `
+            <td>${grupa.id}</td>
+            <td>${grupa.naziv}</td>
+            <td><button class="deleteGroupBtn">Obriši</button></td>
+        `
+
+        const deleteBtn = row.querySelector(".deleteGroupBtn")
+        deleteBtn.addEventListener("click", () => {
+            deleteGrupa(grupa.id)
+        })
+
+        tbody.appendChild(row)
+    }
+}
+
+// Slanje delete zahteva
+function deleteGrupa(id) {
+    fetch(`http://localhost:5006/api/Grupa/${id}`, {
+        method: 'DELETE'
+    })
+    .then(res => {
+        if (res.ok) {
+            loadGrupe()
+        } else {
+            alert("Brisanje grupe nije uspelo.")
+        }
+    })
+}
+
+// Pokretanje prilikom ucitavanja stranice
+document.addEventListener("DOMContentLoaded", initializeGrupe)
