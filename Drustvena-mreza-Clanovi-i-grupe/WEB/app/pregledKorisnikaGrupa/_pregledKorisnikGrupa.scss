@@ -1,0 +1,23 @@
+@use '../styles/global' as *;
+
+.korisnik-lista {
+  padding: 2rem;
+
+  h2 {
+    color: $primary-color;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      background-color: $primary-color;
+      color: white;
+    }
+
+    td {
+      padding: 0.5rem;
+    }
+  }
+}

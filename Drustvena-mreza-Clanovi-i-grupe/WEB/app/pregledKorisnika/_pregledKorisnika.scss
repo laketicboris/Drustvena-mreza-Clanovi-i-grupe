@@ -1,0 +1,87 @@
+@use '../styles/global' as *;
+
+.site-description {
+  text-align: center;
+  margin-top: 2rem;
+
+  h2 {
+    color: $primary-color;
+  }
+
+  #dodajKorisnikaBtn {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+
+  #potvrdna-poruka {
+    color: $primary-color;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+  hr {
+    width: 60%;
+    margin: 1rem auto;
+    border: 1px solid $accent-color;
+  }
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 1000px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.user-data {
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  margin-top: 2rem;
+
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: $primary-color;
+    color: white;
+    font-weight: bold;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .izmeniKorisnikaBtn {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+}

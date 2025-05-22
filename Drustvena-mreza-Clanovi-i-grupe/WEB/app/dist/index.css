@@ -5,62 +5,209 @@ body {
   background-color: #f8f9fa;
 }
 
-#table-details {
-  padding: 1rem;
-}
-#table-details table {
-  width: 50%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-#table-details table th,
-#table-details table td {
-  border: 1px solid #ddd;
-  padding: 0.5rem;
-  text-align: left;
-}
-#table-details table th {
+.navbar {
   background-color: #4caf50;
   color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-#table-details table tr:hover {
-  background-color: #f1f1f1;
+.navbar .title {
+  margin: 0;
+}
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.navbar .nav-links li a {
+  color: white;
+  text-decoration: none;
+}
+.navbar .nav-links li a:hover {
+  text-decoration: underline;
 }
 
-button {
+.site-description {
+  text-align: center;
+  margin-top: 2rem;
+}
+.site-description h2 {
+  color: #4caf50;
+}
+.site-description hr {
+  margin: 1rem auto;
+  width: 50%;
+  border: 1px solid #388e3c;
+}
+
+.site-description {
+  text-align: center;
+  margin-top: 2rem;
+}
+.site-description h2 {
+  color: #4caf50;
+}
+.site-description hr {
+  width: 60%;
+  margin: 1rem auto;
+  border: 1px solid #388e3c;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-container {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#form-data {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.form-row label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+.form-row input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-row #form-resetBtn,
+.form-row #form-submitBtn {
   background-color: #4caf50;
   color: white;
   border: none;
-  padding: 5px 10px;
-  cursor: pointer;
+  padding: 8px 16px;
+  margin: 10px;
   border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
-button:hover {
+.form-row #form-resetBtn:hover,
+.form-row #form-submitBtn:hover {
+  background-color: #388e3c;
+}
+.form-row #error-msg {
+  color: #dc3545;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.site-description {
+  text-align: center;
+  margin-top: 2rem;
+}
+.site-description h2 {
+  color: #4caf50;
+}
+.site-description #dodajKorisnikaBtn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.site-description #dodajKorisnikaBtn:hover {
+  background-color: #388e3c;
+}
+.site-description #potvrdna-poruka {
+  color: #4caf50;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.site-description hr {
+  width: 60%;
+  margin: 1rem auto;
+  border: 1px solid #388e3c;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 1000px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.user-data {
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+.user-data th, .user-data td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+.user-data th {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+.user-data tr:hover {
+  background-color: #f1f1f1;
+}
+.user-data .izmeniKorisnikaBtn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.user-data .izmeniKorisnikaBtn:hover {
   background-color: #388e3c;
 }
 
-form {
-  background: white;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  text-align: center;
+.korisnik-lista {
+  padding: 2rem;
 }
-form label, form p {
-  font-weight: bold;
+.korisnik-lista h2 {
+  color: #4caf50;
 }
-
-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.korisnik-lista table {
+  width: 100%;
+  border-collapse: collapse;
 }
-
-.hidden {
-  display: none;
+.korisnik-lista table th {
+  background-color: #4caf50;
+  color: white;
+}
+.korisnik-lista table td {
+  padding: 0.5rem;
 }
 
 /*# sourceMappingURL=index.css.map */
