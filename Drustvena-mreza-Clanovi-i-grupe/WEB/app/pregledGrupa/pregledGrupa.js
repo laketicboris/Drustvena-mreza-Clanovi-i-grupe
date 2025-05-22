@@ -15,7 +15,7 @@ function initializeGrupe() {
 
 // Ucitavanje svih grupa sa servera
 function loadGrupe() {
-    fetch('http://localhost:5006/api/Grupa') 
+    fetch('http://localhost:3891/api/grupa') 
         .then(response => {
             if (!response.ok) {
                 throw new Error("Greška prilikom zahteva: " + response.status)
@@ -67,7 +67,7 @@ function createGroupTable(grupe) {
 
 // Slanje delete zahteva
 function deleteGrupa(id) {
-    fetch(`http://localhost:5006/api/Grupa/${id}`, {
+    fetch(`http://localhost:3891/api/grupa/${id}`, {
         method: 'DELETE'
     })
     .then(res => {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
 {
-    [Route("api/grupa/{grupaId}/korisnik")]
+    [Route("api/grupa-korisnik/{grupaId}/korisnik")]
     [ApiController]
     public class GrupaKorisnikController : ControllerBase
     {

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/grupa")]
     public class GrupaController : ControllerBase
     {
         //Repozitorijumi za grupe i korisnike
