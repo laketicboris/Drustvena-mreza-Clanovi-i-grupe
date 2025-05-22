@@ -1,4 +1,40 @@
+@use './styles/global' as *;
+
 @use './dodavanjeIzmenaKorisnika/dodavanjeIzmenaKorisnika';
 @use './pregledKorisnika/pregledKorisnika';
 @use './pregledKorisnikaGrupa/pregledKorisnikGrupa';
-@use './styles/global';
+
+
+
+.site-description {
+  text-align: center;
+  margin-top: 2rem;
+
+  h2 {
+    color: $primary-color;
+    font-size: 2rem;
+  }
+
+  hr {
+    width: 60%;
+    margin: 1.5rem auto;
+    border: 1px solid $accent-color;
+  }
+}
+h2 {
+  color: $primary-color;
+  font-size: 2rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
