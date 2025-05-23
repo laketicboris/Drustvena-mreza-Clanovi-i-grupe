@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dodaj / Izmeni Grupu</title>
+  <link rel="stylesheet" href="../../dist/index.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="title">Drustvena mreza</h1>
+    <ul class="nav-links">
+      <li><a href="../pregledGrupa/pregledGrupa.html">Grupe</a></li>
+      <li><a href="../pregledKorisnika/pregledKorisnika.html">Korisnici</a></li>
+    </ul>
+  </nav>
+
+  <section class="site-description">
+    <hr>
+    <h2 id="form-title">Dodaj Grupu</h2>
+    <hr>
+  </section>
+
+  <section class="main-content">
+    <div class="form-container">
+<form id="groupForm">
+  <input type="hidden" id="grupaId">
+  
+  <div class="form-row">
+    <label for="ime">Ime grupe:</label>
+    <input type="text" id="ime" name="ime" required>
+  </div>
+  
+  <div class="form-row">
+    <label for="datumOsnivanja">Datum osnivanja:</label>
+    <input type="date" id="datumOsnivanja" name="datumOsnivanja" required>
+  </div>
+  
+  <div class="form-row">
+    <button type="reset">Resetuj</button>
+    <button type="submit">Sačuvaj</button>
+  </div>
+  
+  <div class="form-row">
+    <p id="error-msg"></p>
+  </div>
+</form>
+
+    </div>
+  </section>
+
+  <script src="dodavanjeIzmenaGrupe.js"></script>
+</body>
+</html>

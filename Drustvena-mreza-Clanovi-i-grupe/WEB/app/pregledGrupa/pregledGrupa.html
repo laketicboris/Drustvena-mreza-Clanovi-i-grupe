@@ -10,7 +10,7 @@
     <nav class="navbar">
         <h1 class="title">Drustvena mreza</h1>
         <ul class="nav-links">
-            <li><a href="#">Grupe</a></li>
+            <li><a href="../pregledGrupa/pregledGrupa.html">Grupe</a></li>
             <li><a href="../pregledKorisnika/pregledKorisnika.html">Korisnici</a></li>
         </ul>
     </nav>
@@ -25,7 +25,19 @@
     </section>
 
     <section class="main-content" id="grupaLista">
-       
+        <!-- A táblázat statikus szerkezete -->
+        <table class="user-data">
+            <thead class="user-data-head">
+                <tr>
+                    <th>ID</th>
+                    <th>Naziv</th>
+                    <th>Opcije</th>
+                </tr>
+            </thead>
+            <tbody id="group-data-body">
+                <!-- Itt jönnek majd a JS által generált sorok -->
+            </tbody>
+        </table>
     </section>
 
     <script src="pregledGrupa.js"></script>

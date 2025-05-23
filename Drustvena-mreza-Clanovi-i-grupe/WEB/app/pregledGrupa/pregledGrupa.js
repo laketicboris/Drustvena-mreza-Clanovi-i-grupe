@@ -11,6 +11,14 @@ class Grupa {
 // Inicijalizacija kada se stranica ucita
 function initializeGrupe() {
     loadGrupe()
+
+    // Dodaj Grupu gomb kezelése
+    const dodajBtn = document.getElementById('dodajGrupuBtn')
+    if (dodajBtn) {
+        dodajBtn.addEventListener('click', () => {
+            window.location.href = '../dodavanjeIzmenaGrupe/dodavanjeIzmenaGrupe.html'
+        })
+    }
 }
 
 // Ucitavanje svih grupa sa servera
@@ -53,9 +61,20 @@ function createGroupTable(grupe) {
         row.innerHTML = `
             <td>${grupa.id}</td>
             <td>${grupa.naziv}</td>
-            <td><button class="deleteGroupBtn">Obriši</button></td>
+            <td>
+              <button class="editGroupBtn" data-id="${grupa.id}">Izmeni</button>
+              <button class="deleteGroupBtn" data-id="${grupa.id}">Obriši</button>
+            </td>
         `
 
+        // Izmeni gomb
+        const editBtn = row.querySelector(".editGroupBtn")
+        editBtn.addEventListener("click", () => {
+            const id = editBtn.getAttribute('data-id')
+            window.location.href = `../dodavanjeIzmenaGrupe/dodavanjeIzmenaGrupe.html?grupaId=${id}`
+        })
+
+        // Brisanje
         const deleteBtn = row.querySelector(".deleteGroupBtn")
         deleteBtn.addEventListener("click", () => {
             deleteGrupa(grupa.id)
