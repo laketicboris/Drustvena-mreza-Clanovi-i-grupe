@@ -26,6 +26,14 @@ namespace Drustvena_mreza_Clanovi_i_grupe.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] Grupa novaGrupa)
         {
+            //Generesi novi ID
+            int newId = 1;
+            if (grupaRepo.Data.Any())
+            {
+                newId = grupaRepo.Data.Keys.Max() + 1;
+            }
+            novaGrupa.Id = newId;
+
             if (grupaRepo.Data.ContainsKey(novaGrupa.Id))
                 return BadRequest("Grupa sa datim ID-jem već postoji.");
 

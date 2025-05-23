@@ -2,9 +2,9 @@
 
 // Model klase
 class Grupa {
-    constructor(id, naziv) {
+    constructor(id, ime) {
         this.id = id
-        this.naziv = naziv
+        this.ime = ime
     }
 }
 
@@ -60,19 +60,11 @@ function createGroupTable(grupe) {
         const row = document.createElement("tr")
         row.innerHTML = `
             <td>${grupa.id}</td>
-            <td>${grupa.naziv}</td>
+            <td>${grupa.ime}</td>
             <td>
-              <button class="editGroupBtn" data-id="${grupa.id}">Izmeni</button>
               <button class="deleteGroupBtn" data-id="${grupa.id}">Obriši</button>
             </td>
         `
-
-        // Izmeni gomb
-        const editBtn = row.querySelector(".editGroupBtn")
-        editBtn.addEventListener("click", () => {
-            const id = editBtn.getAttribute('data-id')
-            window.location.href = `../dodavanjeIzmenaGrupe/dodavanjeIzmenaGrupe.html?grupaId=${id}`
-        })
 
         // Brisanje
         const deleteBtn = row.querySelector(".deleteGroupBtn")
