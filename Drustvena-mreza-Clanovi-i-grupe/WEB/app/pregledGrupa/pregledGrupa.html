@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Drustvena mreza</title>
-    <link rel="stylesheet" href="../../dist/index.css">
+    <link rel="stylesheet" href="../../dist/index.css" />
 </head>
 <body>
     <nav class="navbar">
@@ -16,11 +16,11 @@
     </nav>
 
     <section class="site-description">
-        <hr>
+        <hr />
         <h2>Pregled Grupa</h2>
-        <hr>
+        <hr />
         <button id="dodajGrupuBtn">Dodaj Grupu</button>
-        <hr>
+        <hr />
         <p id="potvrdna-poruka"></p>
     </section>
 
@@ -37,6 +37,19 @@
             <tbody id="group-data-body">
                 <!-- Itt jönnek majd a JS által generált sorok -->
             </tbody>
+        </table>
+    </section>
+
+    <!-- Új rész a tagok és nem tagok listázásához -->
+    <section id="detaljiGrupe" style="margin-top: 40px; display: none;">
+        <h3>Članovi grupe</h3>
+        <table id="clanoviTabela" class="user-data">
+            <!-- Tagok listája -->
+        </table>
+
+        <h3 style="margin-top: 30px;">Ostali korisnici</h3>
+        <table id="ostaliTabela" class="user-data">
+            <!-- Nem tagok listája -->
         </table>
     </section>
 
